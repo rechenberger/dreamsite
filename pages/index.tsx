@@ -1,4 +1,5 @@
-import tw from 'twin.macro'
+import React from 'react'
+import { MainLayout } from '../lib/components/MainLayout'
 import { SimpleJson } from '../lib/components/SimpleJson'
 import { createApolloClientSsr } from '../lib/graphql/apollo/apollo'
 import {
@@ -6,21 +7,13 @@ import {
   useGetCharactersQuery,
 } from '../lib/graphql/operations/GetCharacters.graphql'
 
-const Layout = tw.div`
-  m-8
-  flex
-  flex-col
-  space-y-8
-`
-
 export default function Home() {
   const { data } = useGetCharactersQuery()
   const characters = data?.characters
   return (
-    <Layout>
-      <h1>DreamSite</h1>
+    <MainLayout>
       <SimpleJson value={characters} />
-    </Layout>
+    </MainLayout>
   )
 }
 
