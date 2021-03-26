@@ -1,4 +1,4 @@
-import { ApolloClient } from '@apollo/client'
+import { ApolloClient, QueryOptions } from '@apollo/client'
 import { merge } from 'lodash'
 import {
   GetStaticProps,
@@ -14,13 +14,15 @@ export type GetStaticPropsPlusContext = GetStaticPropsContext & {
 export type GetStaticPropsPlusResult = Partial<GetStaticPropsResult<any>> | void
 
 export type GetStaticPropsPlusOptions = {
-  getPropsWithApollo: (
+  queries?: QueryOptions[]
+  getQueries?: (ctx: GetStaticPropsPlusContext) => Promise<QueryOptions[]>
+  getPropsWithApollo?: (
     ctx: GetStaticPropsPlusContext
   ) => Promise<GetStaticPropsPlusResult>
 }
 
 export const getStaticPropsPlus = (options: GetStaticPropsPlusOptions) => {
-  const { getPropsWithApollo } = options
+  const { getPropsWithApollo, getQueries, queries: staticQueries } = options
 
   const getStaticProps: GetStaticProps = async (ctx) => {
     const apolloClient = createApolloClientSsr({})
@@ -28,10 +30,21 @@ export const getStaticPropsPlus = (options: GetStaticPropsPlusOptions) => {
 
     let result: GetStaticPropsPlusResult = {}
 
+    // Queries
+    let queries = staticQueries || []
+    if (getQueries) {
+      queries = [...queries, ...(await getQueries(ctxPlus))]
+    }
+    for (const query of queries) {
+      await apolloClient.query(query)
+    }
+
     if (getPropsWithApollo) {
+      // getPropsWithApollo
       result = merge(result, await getPropsWithApollo(ctxPlus))
     }
 
+    // Apollo Cache
     result = merge(result, {
       props: {
         initialApolloState: apolloClient.cache.extract(),

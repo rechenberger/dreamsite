@@ -17,25 +17,8 @@ const CharactersPage = () => {
   )
 }
 
-// export const getStaticProps = async () => {
-//   const apolloClient = createApolloClientSsr({})
-
-//   await apolloClient.query({
-//     query: GetCharactersDocument,
-//   })
-
-//   return {
-//     props: {
-//       initialApolloState: apolloClient.cache.extract(),
-//     },
-//   }
-// }
 export const getStaticProps = getStaticPropsPlus({
-  getPropsWithApollo: async ({ apolloClient }) => {
-    await apolloClient.query({
-      query: GetCharactersDocument,
-    })
-  },
+  queries: [{ query: GetCharactersDocument }],
 })
 
 export default CharactersPage
