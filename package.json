@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "yarn graphql",
     "dev": "next dev",
-    "build": "yarn graphql && next build",
+    "build": "next build",
     "start": "next start",
     "graphql": "graphql-let --require dotenv/config"
   },
