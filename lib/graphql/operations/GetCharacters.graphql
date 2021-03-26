@@ -1,3 +1,4 @@
+# import './CharacterCard.graphql'
 query GetCharacters {
   characters {
     results {
@@ -8,10 +9,4 @@ query GetCharacters {
       count
     }
   }
-}
-
-fragment CharacterCard on Character {
-  id
-  name
-  image
 }
