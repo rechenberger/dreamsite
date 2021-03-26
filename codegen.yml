@@ -1,0 +1,7 @@
+overwrite: true
+schema:
+  - ${NEXT_PUBLIC_GRAPHQL_ENDPOINT_URL}
+generates:
+  ./__generated__/graphql.schema.json:
+    plugins:
+      - 'introspection'

@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "graphql": "graphql-let --require dotenv/config"
+    "graphql": "graphql-let --require dotenv/config",
+    "graphql:schema": "graphql-codegen --require dotenv/config"
   },
   "dependencies": {
     "@apollo/client": "^3.3.13",
@@ -21,6 +22,7 @@
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.13.0",
     "@graphql-codegen/cli": "^1.21.3",
+    "@graphql-codegen/introspection": "^1.18.1",
     "@graphql-codegen/plugin-helpers": "^1.18.4",
     "@graphql-codegen/typescript": "^1.21.1",
     "@graphql-codegen/typescript-operations": "^1.17.15",
