@@ -1,0 +1,12 @@
+query GetCharacter($id: ID!) {
+  character(id: $id) {
+    ...CharacterCard
+  }
+}
+
+# TODO: Share Fragment
+fragment CharacterCard on Character {
+  id
+  name
+  image
+}
