@@ -1,8 +1,10 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
 import tw from 'twin.macro'
 
-const Container = tw.div`
+const Container = tw.a`
+  cursor-pointer
   flex
   flex-col
   m-8
@@ -17,9 +19,11 @@ const Title = tw.h1`
 
 export const Hero: FunctionComponent<{}> = () => {
   return (
-    <Container>
-      <Image src="/images/logo.png" height={200} width={200} />
-      <Title>DreamSite</Title>
-    </Container>
+    <Link href="/">
+      <Container>
+        <Image src="/images/logo.png" height={200} width={200} />
+        <Title>DreamSite</Title>
+      </Container>
+    </Link>
   )
 }

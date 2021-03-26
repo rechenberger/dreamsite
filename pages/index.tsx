@@ -1,32 +1,41 @@
+import { map } from 'lodash'
+import Link from 'next/link'
 import React from 'react'
+import tw from 'twin.macro'
 import { MainLayout } from '../lib/components/MainLayout'
-import { SimpleJson } from '../lib/components/SimpleJson'
-import { createApolloClientSsr } from '../lib/graphql/apollo/apollo'
-import {
-  GetCharactersDocument,
-  useGetCharactersQuery,
-} from '../lib/graphql/operations/GetCharacters.graphql'
+
+const Container = tw.div`
+  flex
+  flex-col
+  self-center
+`
+
+const StyledLink = tw.a`
+  cursor-pointer
+  hover:underline
+  text-purple-500
+`
 
 export default function Home() {
-  const { data } = useGetCharactersQuery()
-  const characters = data?.characters
+  const links = [
+    {
+      label: 'Characters',
+      href: '/characters',
+    },
+    // {
+    //   label: 'Episodes',
+    //   href: '/episodes',
+    // },
+  ]
   return (
     <MainLayout>
-      <SimpleJson value={characters} />
+      <Container>
+        {map(links, ({ label, href }) => (
+          <Link href={href}>
+            <StyledLink>{label}</StyledLink>
+          </Link>
+        ))}
+      </Container>
     </MainLayout>
   )
-}
-
-export async function getStaticProps() {
-  const apolloClient = createApolloClientSsr({})
-
-  await apolloClient.query({
-    query: GetCharactersDocument,
-  })
-
-  return {
-    props: {
-      initialApolloState: apolloClient.cache.extract(),
-    },
-  }
 }
