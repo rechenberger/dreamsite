@@ -16,18 +16,20 @@ export type GetStaticPropsPlusResult = Partial<GetStaticPropsResult<any>> | void
 export type GetStaticPropsPlusOptions = {
   queries?: QueryOptions[]
   getQueries?: (ctx: GetStaticPropsPlusContext) => Promise<QueryOptions[]>
-  getPropsWithApollo?: (
+  getProps?: (
     ctx: GetStaticPropsPlusContext
   ) => Promise<GetStaticPropsPlusResult>
 }
 
 export const getStaticPropsPlus = (options: GetStaticPropsPlusOptions) => {
-  const { getPropsWithApollo, getQueries, queries: staticQueries } = options
+  const { getProps, getQueries, queries: staticQueries } = options
 
   const getStaticProps: GetStaticProps = async (ctx) => {
+    // Apollo Client
     const apolloClient = createApolloClientSsr({})
     const ctxPlus: GetStaticPropsPlusContext = { ...ctx, apolloClient }
 
+    // Result
     let result: GetStaticPropsPlusResult = {}
 
     // Queries
@@ -39,9 +41,9 @@ export const getStaticPropsPlus = (options: GetStaticPropsPlusOptions) => {
       await apolloClient.query(query)
     }
 
-    if (getPropsWithApollo) {
-      // getPropsWithApollo
-      result = merge(result, await getPropsWithApollo(ctxPlus))
+    // getProps
+    if (getProps) {
+      result = merge(result, await getProps(ctxPlus))
     }
 
     // Apollo Cache
@@ -51,6 +53,7 @@ export const getStaticPropsPlus = (options: GetStaticPropsPlusOptions) => {
       },
     })
 
+    // Return
     return result as GetStaticPropsResult<any>
   }
 
