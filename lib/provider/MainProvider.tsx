@@ -1,7 +1,7 @@
 import { ApolloProvider } from '@apollo/client'
+import { useApollo } from 'lib/graphql/apollo/apollo'
+import { GlobalStyles } from 'lib/provider/GlobalStyles'
 import React, { FunctionComponent } from 'react'
-import { useApollo } from '../graphql/apollo/apollo'
-import { GlobalStyles } from './GlobalStyles'
 
 export const MainProvider: FunctionComponent<{ pageProps: any }> = ({
   children,

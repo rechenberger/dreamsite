@@ -1,21 +1,21 @@
-import { map } from 'lodash'
-import React from 'react'
-import { CharacterCard } from '../../lib/components/CharacterCard'
-import { MainLayout } from '../../lib/components/MainLayout'
-import { SimpleGrid } from '../../lib/components/SimpleGrid'
+import { CharacterCard } from 'lib/components/CharacterCard'
+import { MainLayout } from 'lib/components/MainLayout'
+import { SimpleGrid } from 'lib/components/SimpleGrid'
 import {
   GetCharacterDocument,
   GetCharacterQuery,
   GetCharacterQueryVariables,
   useGetCharacterQuery,
-} from '../../lib/graphql/operations/GetCharacter.graphql'
+} from 'lib/graphql/operations/GetCharacter.graphql'
 import {
   GetCharactersDocument,
   GetCharactersQuery,
-} from '../../lib/graphql/operations/GetCharacters.graphql'
-import { getStaticPathsPlus } from '../../lib/next/getStaticPathsPlus'
-import { getStaticPropsPlus } from '../../lib/next/getStaticPropsPlus'
-import { useParams } from '../../lib/next/useParams'
+} from 'lib/graphql/operations/GetCharacters.graphql'
+import { getStaticPathsPlus } from 'lib/next/getStaticPathsPlus'
+import { getStaticPropsPlus } from 'lib/next/getStaticPropsPlus'
+import { useParams } from 'lib/next/useParams'
+import { map } from 'lodash'
+import React from 'react'
 
 const CharacterDetailsPage = () => {
   const { characterId } = useParams()

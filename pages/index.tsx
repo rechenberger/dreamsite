@@ -1,8 +1,8 @@
+import { MainLayout } from 'lib/components/MainLayout'
 import { map } from 'lodash'
 import Link from 'next/link'
 import React from 'react'
 import tw from 'twin.macro'
-import { MainLayout } from '../lib/components/MainLayout'
 
 const Container = tw.div`
   flex

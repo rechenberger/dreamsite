@@ -1,6 +1,6 @@
 import { ApolloClient } from '@apollo/client'
+import { createApolloClientSsr } from 'lib/graphql/apollo/apollo'
 import { GetStaticPaths, GetStaticPathsResult } from 'next'
-import { createApolloClientSsr } from '../graphql/apollo/apollo'
 
 type Fallback = GetStaticPathsResult['fallback']
 type Paths = GetStaticPathsResult['paths']

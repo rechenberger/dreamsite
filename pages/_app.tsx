@@ -1,4 +1,4 @@
-import { MainProvider } from '../lib/provider/MainProvider'
+import { MainProvider } from 'lib/provider/MainProvider'
 
 function MyApp({ Component, pageProps }) {
   return (

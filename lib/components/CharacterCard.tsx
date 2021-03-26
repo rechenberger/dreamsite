@@ -1,9 +1,9 @@
+import { SimpleJson } from 'lib/components/SimpleJson'
+import { CharacterCardFragment } from 'lib/graphql/operations/CharacterCard.graphql'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
 import tw from 'twin.macro'
-import { CharacterCardFragment } from '../graphql/operations/GetCharacters.graphql'
-import { SimpleJson } from './SimpleJson'
 
 const Card = tw.a`
   cursor-pointer

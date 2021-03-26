@@ -1,13 +1,13 @@
-import { map } from 'lodash'
-import React from 'react'
-import { CharacterCard } from '../../lib/components/CharacterCard'
-import { MainLayout } from '../../lib/components/MainLayout'
-import { SimpleGrid } from '../../lib/components/SimpleGrid'
+import { CharacterCard } from 'lib/components/CharacterCard'
+import { MainLayout } from 'lib/components/MainLayout'
+import { SimpleGrid } from 'lib/components/SimpleGrid'
 import {
   GetCharactersDocument,
   useGetCharactersQuery,
-} from '../../lib/graphql/operations/GetCharacters.graphql'
-import { getStaticPropsPlus } from '../../lib/next/getStaticPropsPlus'
+} from 'lib/graphql/operations/GetCharacters.graphql'
+import { getStaticPropsPlus } from 'lib/next/getStaticPropsPlus'
+import { map } from 'lodash'
+import React from 'react'
 
 const CharactersPage = () => {
   const { data } = useGetCharactersQuery()

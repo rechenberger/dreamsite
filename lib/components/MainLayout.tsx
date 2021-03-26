@@ -1,6 +1,6 @@
+import { Hero } from 'lib/components/Hero'
 import React, { FunctionComponent } from 'react'
 import tw from 'twin.macro'
-import { Hero } from './Hero'
 
 const Layout = tw.div`
   m-8

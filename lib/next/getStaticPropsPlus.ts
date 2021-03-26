@@ -1,11 +1,11 @@
 import { ApolloClient, QueryOptions } from '@apollo/client'
+import { createApolloClientSsr } from 'lib/graphql/apollo/apollo'
 import { merge } from 'lodash'
 import {
   GetStaticProps,
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from 'next'
-import { createApolloClientSsr } from '../graphql/apollo/apollo'
 
 export type GetStaticPropsPlusContext = GetStaticPropsContext & {
   apolloClient: ApolloClient<any>
