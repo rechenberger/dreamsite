@@ -1,5 +1,6 @@
-import Document from 'next/document'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import { MainHead } from '../lib/provider/MainHead'
 
 // FROM: https://github.com/ben-rogerson/twin.examples/tree/master/next-styled-components#add-the-server-stylesheet
 export default class MyDocument extends Document {
@@ -26,5 +27,19 @@ export default class MyDocument extends Document {
     } finally {
       sheet.seal()
     }
+  }
+
+  render() {
+    return (
+      <Html>
+        <Head>
+          <MainHead />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
   }
 }
