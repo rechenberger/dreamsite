@@ -17,7 +17,7 @@ const createApolloClient = (options: CreateApolloClientOptions) => {
 }
 
 let apolloClientCached: ApolloClient<any>
-const createApolloClientSsr = (options: CreateApolloClientOptions) => {
+export const createApolloClientSsr = (options: CreateApolloClientOptions) => {
   const { initialState } = options
   const isServer = typeof window === 'undefined'
   const apolloClient = apolloClientCached ?? createApolloClient(options)
