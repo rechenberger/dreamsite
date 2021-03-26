@@ -1,11 +1,11 @@
 import React from 'react'
 import { MainLayout } from '../../lib/components/MainLayout'
 import { SimpleJson } from '../../lib/components/SimpleJson'
-import { createApolloClientSsr } from '../../lib/graphql/apollo/apollo'
 import {
   GetCharactersDocument,
   useGetCharactersQuery,
 } from '../../lib/graphql/operations/GetCharacters.graphql'
+import { getStaticPropsPlus } from '../../lib/next/getStaticPropsPlus'
 
 const CharactersPage = () => {
   const { data } = useGetCharactersQuery()
@@ -17,18 +17,25 @@ const CharactersPage = () => {
   )
 }
 
-export const getStaticProps = async () => {
-  const apolloClient = createApolloClientSsr({})
+// export const getStaticProps = async () => {
+//   const apolloClient = createApolloClientSsr({})
 
-  await apolloClient.query({
-    query: GetCharactersDocument,
-  })
+//   await apolloClient.query({
+//     query: GetCharactersDocument,
+//   })
 
-  return {
-    props: {
-      initialApolloState: apolloClient.cache.extract(),
-    },
-  }
-}
+//   return {
+//     props: {
+//       initialApolloState: apolloClient.cache.extract(),
+//     },
+//   }
+// }
+export const getStaticProps = getStaticPropsPlus({
+  getPropsWithApollo: async ({ apolloClient }) => {
+    await apolloClient.query({
+      query: GetCharactersDocument,
+    })
+  },
+})
 
 export default CharactersPage
