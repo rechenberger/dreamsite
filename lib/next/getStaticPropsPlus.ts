@@ -19,10 +19,11 @@ export type GetStaticPropsPlusOptions = {
   getProps?: (
     ctx: GetStaticPropsPlusContext
   ) => Promise<GetStaticPropsPlusResult>
+  revalidate?: number | boolean
 }
 
 export const getStaticPropsPlus = (options: GetStaticPropsPlusOptions) => {
-  const { getProps, getQueries, queries: staticQueries } = options
+  const { getProps, getQueries, queries: staticQueries, revalidate } = options
 
   const getStaticProps: GetStaticProps = async (ctx) => {
     // Apollo Client
@@ -30,7 +31,9 @@ export const getStaticPropsPlus = (options: GetStaticPropsPlusOptions) => {
     const ctxPlus: GetStaticPropsPlusContext = { ...ctx, apolloClient }
 
     // Result
-    let result: GetStaticPropsPlusResult = {}
+    let result: GetStaticPropsPlusResult = {
+      revalidate,
+    }
 
     // Queries
     let queries = staticQueries || []
