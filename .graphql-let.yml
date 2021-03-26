@@ -1,5 +1,5 @@
 schema:
-  - https://rickandmortyapi.com/graphql
+  - ${NEXT_PUBLIC_GRAPHQL_ENDPOINT_URL}
 documents: '**/*.graphql'
 plugins:
   - typescript
