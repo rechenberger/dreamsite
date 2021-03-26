@@ -2,8 +2,6 @@ import React, { useCallback } from 'react'
 import tw from 'twin.macro'
 
 const Container = tw.pre`
-  border
-  rounded
   bg-gray-800
   text-gray-100
   text-xs

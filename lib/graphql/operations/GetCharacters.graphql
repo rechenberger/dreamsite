@@ -1,12 +1,17 @@
 query GetCharacters {
   characters {
     results {
-      id
-      name
+      ...CharacterCard
     }
     info {
       pages
       count
     }
   }
+}
+
+fragment CharacterCard on Character {
+  id
+  name
+  image
 }

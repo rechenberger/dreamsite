@@ -1,8 +1,8 @@
 import { map } from 'lodash'
 import React from 'react'
+import { CharacterCard } from '../../lib/components/CharacterCard'
 import { MainLayout } from '../../lib/components/MainLayout'
 import { SimpleGrid } from '../../lib/components/SimpleGrid'
-import { SimpleJson } from '../../lib/components/SimpleJson'
 import {
   GetCharactersDocument,
   useGetCharactersQuery,
@@ -15,10 +15,9 @@ const CharactersPage = () => {
   return (
     <MainLayout>
       <SimpleGrid>
-        {map(characters, (character) => {
-          const { id } = character
-          return <SimpleJson key={id} value={character} />
-        })}
+        {map(characters, (character) => (
+          <CharacterCard key={character.id} character={character} />
+        ))}
       </SimpleGrid>
     </MainLayout>
   )
