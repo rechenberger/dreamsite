@@ -31,7 +31,7 @@ export default function Home() {
     <MainLayout>
       <Container>
         {map(links, ({ label, href }) => (
-          <Link href={href}>
+          <Link href={href} key={href}>
             <StyledLink>{label}</StyledLink>
           </Link>
         ))}
