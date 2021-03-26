@@ -1,5 +1,7 @@
+import { map } from 'lodash'
 import React from 'react'
 import { MainLayout } from '../../lib/components/MainLayout'
+import { SimpleGrid } from '../../lib/components/SimpleGrid'
 import { SimpleJson } from '../../lib/components/SimpleJson'
 import {
   GetCharactersDocument,
@@ -9,10 +11,15 @@ import { getStaticPropsPlus } from '../../lib/next/getStaticPropsPlus'
 
 const CharactersPage = () => {
   const { data } = useGetCharactersQuery()
-  const characters = data?.characters
+  const characters = data?.characters?.results
   return (
     <MainLayout>
-      <SimpleJson value={characters} />
+      <SimpleGrid>
+        {map(characters, (character) => {
+          const { id } = character
+          return <SimpleJson key={id} value={character} />
+        })}
+      </SimpleGrid>
     </MainLayout>
   )
 }

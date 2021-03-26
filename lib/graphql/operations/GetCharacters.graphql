@@ -1,5 +1,9 @@
 query GetCharacters {
   characters {
+    results {
+      id
+      name
+    }
     info {
       pages
       count
