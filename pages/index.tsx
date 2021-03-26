@@ -1,4 +1,5 @@
 import tw from 'twin.macro'
+import { SimpleJson } from '../lib/components/SimpleJson'
 import { createApolloClientSsr } from '../lib/graphql/apollo/apollo'
 import {
   GetCharactersDocument,
@@ -18,7 +19,7 @@ export default function Home() {
   return (
     <Layout>
       <h1>DreamSite</h1>
-      <pre>{JSON.stringify(characters, null, 2)}</pre>
+      <SimpleJson value={characters} />
     </Layout>
   )
 }
