@@ -1,5 +1,6 @@
 import { CharacterCard } from 'lib/components/CharacterCard'
 import { MainLayout } from 'lib/components/MainLayout'
+import { Seo } from 'lib/components/Seo'
 import { SimpleGrid } from 'lib/components/SimpleGrid'
 import {
   GetCharactersDocument,
@@ -14,6 +15,7 @@ const CharactersPage = () => {
   const characters = data?.characters?.results
   return (
     <MainLayout>
+      <Seo title="Characters Overview" />
       <SimpleGrid>
         {map(characters, (character) => (
           <CharacterCard key={character.id} character={character} />

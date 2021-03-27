@@ -22,10 +22,10 @@ const CharacterDetailsPage = () => {
   const { characterId } = useParams()
   const { data } = useGetCharacterQuery({ variables: { id: characterId } })
   const character = data?.character
-  const { name } = character
+  const { name, image } = character
   return (
     <MainLayout>
-      <Seo title={name} />
+      <Seo title={name} image={{ url: image, alt: name }} />
       <SimpleGrid>
         <CharacterCard character={character} />
       </SimpleGrid>
