@@ -3,7 +3,6 @@ import React, { FunctionComponent } from 'react'
 export const MainHead: FunctionComponent<{}> = () => {
   return (
     <>
-      <title>DreamSite</title>
       <link rel="shortcut icon" href="/images/favicon.ico" />
       <link
         rel="icon"

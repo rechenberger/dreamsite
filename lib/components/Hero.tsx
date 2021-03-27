@@ -1,3 +1,4 @@
+import { SITE_NAME } from 'lib/config/config'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
@@ -22,7 +23,7 @@ export const Hero: FunctionComponent<{}> = () => {
     <Link href="/">
       <Container>
         <Image src="/images/logo.png" height={200} width={200} />
-        <Title>DreamSite</Title>
+        <Title>{SITE_NAME}</Title>
       </Container>
     </Link>
   )
