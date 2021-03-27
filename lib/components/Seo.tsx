@@ -13,7 +13,7 @@ export const Seo: FunctionComponent<
 export const SeoDefaults: FunctionComponent = () => {
   return (
     <DefaultSeo
-      titleTemplate={`${SITE_NAME} | %s`}
+      titleTemplate={`%s — ${SITE_NAME}`}
       defaultTitle={`${SITE_NAME}`}
       openGraph={{
         type: 'website',
