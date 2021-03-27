@@ -1,5 +1,6 @@
 import { CharacterCard } from 'lib/components/CharacterCard'
 import { MainLayout } from 'lib/components/MainLayout'
+import { Seo } from 'lib/components/Seo'
 import { SimpleGrid } from 'lib/components/SimpleGrid'
 import {
   GetCharacterDocument,
@@ -21,8 +22,10 @@ const CharacterDetailsPage = () => {
   const { characterId } = useParams()
   const { data } = useGetCharacterQuery({ variables: { id: characterId } })
   const character = data?.character
+  const { name } = character
   return (
     <MainLayout>
+      <Seo title={name} />
       <SimpleGrid>
         <CharacterCard character={character} />
       </SimpleGrid>
