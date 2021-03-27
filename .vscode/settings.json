@@ -2,6 +2,7 @@
   "files.exclude": {
     "**/*.graphql.tsx": true,
     "**/*.graphql.d.ts": true,
-    ".next/*": true
+    ".next/*": true,
+    "out/*": true
   }
 }
