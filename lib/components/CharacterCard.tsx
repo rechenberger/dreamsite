@@ -3,7 +3,7 @@ import { CharacterCardFragment } from 'lib/graphql/operations/CharacterCard.grap
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
-import tw from 'twin.macro'
+import tw, { styled } from 'twin.macro'
 
 const Card = tw.a`
   cursor-pointer
@@ -17,10 +17,16 @@ const StyledImage = tw(Image)`
   object-cover
 `
 
-const ImageContainer = tw.div`
-  relative
-  h-40
-  // aspect-ratio[1]
+const ImageContainer = styled.div`
+  ${tw`
+    relative
+    h-40
+  `}
+
+  @supports(aspect-ratio: 1) {
+    height: auto;
+    aspect-ratio: 1;
+  }
 `
 
 const JsonContainer = tw.div`
