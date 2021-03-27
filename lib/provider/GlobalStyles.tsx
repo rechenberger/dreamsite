@@ -14,6 +14,8 @@ const CustomStyles = createGlobalStyle`
     ${tw`
       bg-gray-100
       text-gray-800
+      dark:bg-gray-900
+      dark:text-gray-100
     `}
   }
 `
