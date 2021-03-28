@@ -13,9 +13,11 @@ yarn dev
 
 ## Technologies
 
-- Next.js
-- Apollo Client
-- Tailwind
-- twin.macro
-- styled-components
-- graphql-let
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Apollo Client](https://www.apollographql.com/docs/react/)
+- [Tailwind](https://tailwindcss.com/)
+- [Styled Components](https://styled-components.com/)
+- [twin.macro](https://github.com/ben-rogerson/twin.macro)
+- [Graphql Code Generator](https://www.graphql-code-generator.com/)
+- [graphql-let](https://github.com/piglovesyou/graphql-let)
