@@ -3,15 +3,10 @@ import { MainLayout } from 'lib/components/MainLayout'
 import { Seo } from 'lib/components/Seo'
 import { SimpleGrid } from 'lib/components/SimpleGrid'
 import {
-  GetCharacterDocument,
-  GetCharacterQuery,
-  GetCharacterQueryVariables,
+  queryGetCharacter,
   useGetCharacterQuery,
 } from 'lib/graphql/operations/GetCharacter.graphql'
-import {
-  GetCharactersDocument,
-  GetCharactersQuery,
-} from 'lib/graphql/operations/GetCharacters.graphql'
+import { queryGetCharacters } from 'lib/graphql/operations/GetCharacters.graphql'
 import { getStaticPathsPlus } from 'lib/next/getStaticPathsPlus'
 import { getStaticPropsPlus } from 'lib/next/getStaticPropsPlus'
 import { useParams } from 'lib/next/useParams'
@@ -37,12 +32,7 @@ export const getStaticProps = getStaticPropsPlus({
   getProps: async ({ params, apolloClient }) => {
     const id = params.characterId as string
     try {
-      await apolloClient.query<GetCharacterQuery, GetCharacterQueryVariables>({
-        query: GetCharacterDocument,
-        variables: {
-          id,
-        },
-      })
+      await queryGetCharacter({ apolloClient, variables: { id } })
     } catch (error) {
       return {
         notFound: true,
@@ -54,9 +44,7 @@ export const getStaticProps = getStaticPropsPlus({
 export const getStaticPaths = getStaticPathsPlus({
   fallback: 'blocking',
   getPaths: async ({ apolloClient }) => {
-    const { data } = await apolloClient.query<GetCharactersQuery>({
-      query: GetCharactersDocument,
-    })
+    const { data } = await queryGetCharacters({ apolloClient })
     return map(data?.characters?.results, ({ id }) => ({
       params: {
         characterId: id,

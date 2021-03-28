@@ -5,4 +5,5 @@ plugins:
   - typescript
   - typescript-operations
   - typescript-react-apollo
+  - './lib/scripts/codegen-apollo-functions.js'
 cacheDir: __generated__
