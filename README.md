@@ -12,3 +12,10 @@ yarn dev
 ```
 
 ## Technologies
+
+- Next.js
+- Apollo Client
+- Tailwind
+- twin.macro
+- styled-components
+- graphql-let
