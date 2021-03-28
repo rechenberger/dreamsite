@@ -3,6 +3,8 @@
     "graphql.vscode-graphql",
     "esbenp.prettier-vscode",
     "vtrois.gitmoji-vscode",
-    "lightyen.tailwindcss-intellisense-twin"
+    "lightyen.tailwindcss-intellisense-twin",
+    "wayou.vscode-todo-highlight",
+    "dbaeumer.vscode-eslint"
   ]
 }
