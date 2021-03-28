@@ -1,10 +1,12 @@
+import styled from 'styled-components'
 import tw from 'twin.macro'
 
-export const SimpleGrid = tw.div`
-  grid
-  gap-4
-  // grid-cols-1
-  // md:grid-cols-2
-  // lg:grid-cols-4
-  grid-template-columns[repeat(auto-fill, minmax(200px, 1fr))]
-`
+export const SimpleGrid = styled.div<{ minColWidth?: string }>(
+  ({ minColWidth = '200px' }) => [
+    tw`
+    grid
+    gap-4
+`,
+    { gridTemplateColumns: `repeat(auto-fill, minmax(${minColWidth}, 1fr))` },
+  ]
+)
