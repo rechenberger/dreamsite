@@ -1,6 +1,6 @@
 # DreamSite
 
-![DreamSite Logo](https://dreamsite.vercel.app/_next/image?url=%2Fimages%2Flogo.png&w=640&q=75 'DreamSite Logo')
+![DreamSite Logo](/public/images/logo.png 'DreamSite Logo')
 
 [https://dreamsite.vercel.app/](https://dreamsite.vercel.app/)
 
@@ -10,3 +10,5 @@
 yarn
 yarn dev
 ```
+
+## Technologies
