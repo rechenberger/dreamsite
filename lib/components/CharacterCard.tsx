@@ -20,13 +20,14 @@ const StyledImage = tw(Image)`
 const ImageContainer = styled.div`
   ${tw`
     relative
-    h-40
+    h-0
   `}
-
-  @supports(aspect-ratio: 1) {
+  // Aspect Ratio 1:1
+  padding-top: 100%;
+  /* @supports (aspect-ratio: 1) {
     height: auto;
     aspect-ratio: 1;
-  }
+  } */
 `
 
 const JsonContainer = tw.div`
