@@ -1,9 +1,9 @@
 import { SimpleJson } from 'lib/components/SimpleJson'
 import { CharacterCardFragment } from 'lib/graphql/operations/CharacterCard.graphql'
-import Image from 'next/image'
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
-import tw, { styled } from 'twin.macro'
+import tw from 'twin.macro'
+import { SimpleImage } from './SimpleImage'
 
 const Card = tw.a`
   cursor-pointer
@@ -11,23 +11,6 @@ const Card = tw.a`
   flex-col
   overflow-hidden
   rounded
-`
-
-const StyledImage = tw(Image)`
-  object-cover
-`
-
-const ImageContainer = styled.div`
-  ${tw`
-    relative
-    h-0
-  `}
-  // Aspect Ratio 1:1
-  padding-top: 100%;
-  /* @supports (aspect-ratio: 1) {
-    height: auto;
-    aspect-ratio: 1;
-  } */
 `
 
 const JsonContainer = tw.div`
@@ -44,9 +27,7 @@ export const CharacterCard: FunctionComponent<{
     <>
       <Link href={href} passHref>
         <Card>
-          <ImageContainer>
-            <StyledImage src={image} layout="fill" />
-          </ImageContainer>
+          <SimpleImage src={image} aspectRatio={1 / 1} />
           <JsonContainer>
             <SimpleJson value={propsToShow} tw="text-xl" />
           </JsonContainer>
