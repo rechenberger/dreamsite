@@ -1,4 +1,3 @@
-import { SimpleJson } from 'lib/components/SimpleJson'
 import { CharacterCardFragment } from 'lib/graphql/operations/CharacterCard.graphql'
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
@@ -13,24 +12,26 @@ const Card = tw.a`
   rounded
 `
 
-const JsonContainer = tw.div`
-  
+const Name = tw.div`
+  p-2
+  bg-gray-800
+  truncate
+  text-purple-400
+  text-center
+  group-hover:underline
 `
 
 export const CharacterCard: FunctionComponent<{
   character: CharacterCardFragment
 }> = ({ character }) => {
   const { id, image, name } = character
-  const propsToShow = { name }
   const href = `/characters/${id}`
   return (
     <>
       <Link href={href} passHref>
-        <Card>
+        <Card className="group">
           <SimpleImage src={image} aspectRatio={1 / 1} />
-          <JsonContainer>
-            <SimpleJson value={propsToShow} tw="text-xl" />
-          </JsonContainer>
+          <Name>{name}</Name>
         </Card>
       </Link>
     </>

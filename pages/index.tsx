@@ -13,7 +13,7 @@ const Container = tw.div`
 const StyledLink = tw.a`
   cursor-pointer
   hover:underline
-  text-purple-500
+  text-purple-400
 `
 
 export default function Home() {

@@ -2,6 +2,7 @@ import { CharacterCard } from 'lib/components/CharacterCard'
 import { MainLayout } from 'lib/components/MainLayout'
 import { Seo } from 'lib/components/Seo'
 import { SimpleGrid } from 'lib/components/SimpleGrid'
+import { SimpleJson } from 'lib/components/SimpleJson'
 import {
   queryGetCharacter,
   useGetCharacterQuery,
@@ -12,6 +13,18 @@ import { getStaticPropsPlus } from 'lib/next/getStaticPropsPlus'
 import { useParams } from 'lib/next/useParams'
 import { map } from 'lodash'
 import React from 'react'
+import tw from 'twin.macro'
+
+const Details = tw.div`
+  bg-gray-800
+  overflow-hidden
+  flex
+  items-stretch
+  justify-items-stretch
+  sm:col-start-2
+  col-span-full
+  rounded
+`
 
 const CharacterDetailsPage = () => {
   const { characterId } = useParams()
@@ -23,6 +36,9 @@ const CharacterDetailsPage = () => {
       <Seo title={name} image={{ url: image, alt: name }} />
       <SimpleGrid>
         <CharacterCard character={character} />
+        <Details>
+          <SimpleJson value={character} tw="w-full" />
+        </Details>
       </SimpleGrid>
     </MainLayout>
   )
