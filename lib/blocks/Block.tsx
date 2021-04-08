@@ -5,8 +5,8 @@ import { getBlockType } from './blocks'
 export const Block: FunctionComponent<{ block: FullBlockFragment }> = ({
   block,
 }) => {
-  const { type, config } = block
+  const { type } = block
   const blockType = getBlockType(type)
   const Component = blockType.component
-  return <Component config={config} />
+  return <Component {...block} />
 }
