@@ -1,5 +1,5 @@
 import React from 'react'
-import { InlineForm, InlineText } from 'react-tinacms-inline'
+import { InlineForm, InlineGroup, InlineText } from 'react-tinacms-inline'
 import styled from 'styled-components'
 import { BlockComponent, BlockType } from '../blocks'
 import { useBlockTina } from '../useBlockTina'
@@ -28,9 +28,30 @@ const HeroBlock: BlockComponent<HeroBlockConfig> = (block) => {
   return (
     <>
       <InlineForm form={form}>
-        <Heading>
-          <InlineText name="mainText" />
-        </Heading>
+        <InlineGroup
+          name="hero"
+          fields={[
+            {
+              name: 'typography.style',
+              label: 'Type Style',
+              description: 'Select a type style for the hero copy',
+              component: 'select',
+              options: ['Swiss-Style', 'Art-Nouveau', 'Command-Line'],
+            },
+            {
+              name: 'typography.color',
+              label: 'Type Color',
+              description: 'Select a color for the hero copy',
+              component: 'color',
+              widget: 'block',
+              colors: ['#404040', '#ff0000', '#1B1E25'],
+            },
+          ]}
+        >
+          <Heading>
+            <InlineText name="mainText" />
+          </Heading>
+        </InlineGroup>
       </InlineForm>
       <Heading>{config.mainText}</Heading>
     </>
