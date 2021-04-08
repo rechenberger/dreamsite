@@ -1,8 +1,8 @@
 import React from 'react'
 import { InlineForm, InlineText } from 'react-tinacms-inline'
 import styled from 'styled-components'
-import { useForm, usePlugin } from 'tinacms'
 import { BlockComponent, BlockType } from '../blocks'
+import { useBlockTina } from '../useBlockTina'
 
 export interface HeroBlockConfig {
   mainText: string
@@ -13,15 +13,9 @@ const Heading = styled.h1`
   font-weight: 900;
 `
 
-const HeroBlock: BlockComponent<HeroBlockConfig> = ({ config, id, type }) => {
-  const formConfig = {
-    id,
-    label: type,
-    initialValues: config,
-    onSubmit: (values) => {
-      console.log({ onSubmit: values })
-      alert(`onSubmit`)
-    },
+const HeroBlock: BlockComponent<HeroBlockConfig> = (block) => {
+  const { form, config } = useBlockTina({
+    block,
     fields: [
       {
         name: 'mainText',
@@ -29,10 +23,7 @@ const HeroBlock: BlockComponent<HeroBlockConfig> = ({ config, id, type }) => {
         component: 'text',
       },
     ],
-  }
-
-  const [betterConfig, form] = useForm(formConfig)
-  usePlugin(form)
+  })
 
   return (
     <>
@@ -41,7 +32,7 @@ const HeroBlock: BlockComponent<HeroBlockConfig> = ({ config, id, type }) => {
           <InlineText name="mainText" />
         </Heading>
       </InlineForm>
-      <Heading>{betterConfig.mainText}</Heading>
+      <Heading>{config.mainText}</Heading>
     </>
   )
 }
