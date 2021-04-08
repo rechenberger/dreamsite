@@ -1,15 +1,35 @@
 import React from 'react'
+import { useForm, usePlugin } from 'tinacms'
 import { BlockComponent, BlockType } from '../blocks'
 
 export interface HeroBlockConfig {
   mainText: string
 }
 
-const HeroBlock: BlockComponent<HeroBlockConfig> = ({ config }) => {
-  const { mainText } = config
+const HeroBlock: BlockComponent<HeroBlockConfig> = ({ config, id, type }) => {
+  const formConfig = {
+    id,
+    label: type,
+    initialValues: config,
+    onSubmit: (values) => {
+      console.log({ onSubmit: values })
+      alert(`onSubmit`)
+    },
+    fields: [
+      {
+        name: 'mainText',
+        label: 'Main Text',
+        component: 'text',
+      },
+    ],
+  }
+
+  const [betterConfig, form] = useForm(formConfig)
+  usePlugin(form)
+
   return (
     <>
-      <h1>{mainText}</h1>
+      <h1>{betterConfig.mainText}</h1>
     </>
   )
 }
