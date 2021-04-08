@@ -1,6 +1,8 @@
 overwrite: true
 schema:
-  - ${NEXT_PUBLIC_GRAPHQL_ENDPOINT_URL}
+  - ${NEXT_PUBLIC_GRAPHQL_ENDPOINT_URL}:
+      headers:
+        'x-hasura-admin-secret': ${HASURA_ADMIN_SECRET}
 generates:
   ./__generated__/graphql.schema.json:
     plugins:

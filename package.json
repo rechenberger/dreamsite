@@ -7,8 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "graphql": "graphql-let --require dotenv/config",
-    "graphql:schema": "graphql-codegen --require dotenv/config"
+    "graphql": "DOTENV_CONFIG_PATH=\"./.env.local\" graphql-let --require dotenv/config",
+    "graphql:schema": "DOTENV_CONFIG_PATH=\"./.env.local\" graphql-codegen --require dotenv/config"
   },
   "dependencies": {
     "@apollo/client": "^3.3.13",
