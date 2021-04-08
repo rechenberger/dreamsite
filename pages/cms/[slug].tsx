@@ -1,3 +1,4 @@
+import { Block } from 'lib/blocks/Block'
 import { MainLayout } from 'lib/components/MainLayout'
 import { Seo } from 'lib/components/Seo'
 import { SimpleGrid } from 'lib/components/SimpleGrid'
@@ -14,12 +15,16 @@ import React from 'react'
 const CmsRoutePage = () => {
   const { slug } = useParams()
   const { data } = useGetPageBlocksQuery({ variables: { slug } })
+  const blocks = data.route.blocks
   return (
     <MainLayout>
       <Seo title={slug} />
       <SimpleGrid>
         <SimpleJson value={data} />
       </SimpleGrid>
+      {blocks.map((block) => (
+        <Block key={block.id} block={block} />
+      ))}
     </MainLayout>
   )
 }
