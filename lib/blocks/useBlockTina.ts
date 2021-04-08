@@ -1,4 +1,5 @@
 import { FullBlockFragment } from 'lib/graphql/operations/GetPageBlocks.graphql'
+import { useSaveBlockMutation } from 'lib/graphql/operations/SaveBlock.graphql'
 import { useForm, usePlugin } from 'tinacms'
 
 export const useBlockTina = ({
@@ -8,14 +9,17 @@ export const useBlockTina = ({
   block: FullBlockFragment
   fields: any[]
 }) => {
+  const [save] = useSaveBlockMutation()
   const { id, type, config: configBefore } = block
+
   const formConfig = {
     id,
     label: type,
     initialValues: configBefore,
-    onSubmit: (values) => {
-      console.log({ onSubmit: values })
-      alert(`onSubmit`)
+    onSubmit: async (config) => {
+      console.log({ config })
+      await save({ variables: { id, config } })
+      alert(`saved`)
     },
     fields,
   }
