@@ -1,13 +1,11 @@
-import React, { FunctionComponent } from 'react'
-import { BlockType } from './blocks'
+import React from 'react'
+import { BlockComponent, BlockType } from '../blocks'
 
 export interface HeroBlockConfig {
   mainText: string
 }
 
-const HeroBlock: FunctionComponent<{ config: HeroBlockConfig }> = ({
-  config,
-}) => {
+const HeroBlock: BlockComponent<HeroBlockConfig> = ({ config }) => {
   const { mainText } = config
   return (
     <>
