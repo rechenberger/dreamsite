@@ -3,6 +3,7 @@ import { SeoDefaults } from 'lib/components/Seo'
 import { useApollo } from 'lib/graphql/apollo/apollo'
 import { GlobalStyles } from 'lib/provider/GlobalStyles'
 import React, { FunctionComponent } from 'react'
+import { TinaProvider } from './TinaProvider'
 
 export const MainProvider: FunctionComponent<{ pageProps: any }> = ({
   children,
@@ -14,7 +15,9 @@ export const MainProvider: FunctionComponent<{ pageProps: any }> = ({
       <SeoDefaults />
       <GlobalStyles />
       <ApolloProvider client={apolloClient}>
-        <>{children}</>
+        <TinaProvider>
+          <>{children}</>
+        </TinaProvider>
       </ApolloProvider>
     </>
   )
