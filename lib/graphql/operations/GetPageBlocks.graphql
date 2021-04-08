@@ -1,0 +1,10 @@
+query GetPageBlocks($slug: String = "team") {
+  route: cms_route_by_pk(slug: $slug, stage: "production", tenantId: "sodefa") {
+    slug
+    blocks {
+      id
+      type
+      config
+    }
+  }
+}
