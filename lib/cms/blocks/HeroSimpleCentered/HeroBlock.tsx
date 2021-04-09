@@ -14,19 +14,7 @@ const HeroBlock: BlockComponent<HeroBlockConfig> = (blockProps) => {
   return (
     <>
       <BlocksControls index={index}>
-        {/* <InlineGroup
-          name="."
-          fields={[
-            {
-              name: 'paragraphText',
-              label: 'Paragraph Text',
-              description: 'Write some more Text',
-              component: 'textarea',
-            },
-          ]}
-        > */}
         <HeroSimpleCenteredTemplate {...blockProps} />
-        {/* </InlineGroup> */}
       </BlocksControls>
     </>
   )
@@ -37,7 +25,14 @@ export const HeroBlockType: BlockType<HeroBlockConfig> = {
   Component: HeroBlock,
   template: {
     label: 'Hero Block',
-    fields: [],
+    fields: [
+      {
+        name: 'paragraphText',
+        label: 'Paragraph Text',
+        description: 'Write some more Text',
+        component: 'textarea',
+      },
+    ],
     defaultItem: {
       mainText: 'This is Hero',
       paragraphText: `Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.`,
