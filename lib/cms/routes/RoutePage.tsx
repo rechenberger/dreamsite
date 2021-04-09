@@ -31,9 +31,11 @@ export const RoutePage: FunctionComponent<{
 
   return (
     <>
+      {/* <ModalProvider> */}
       <InlineForm form={form}>
         <InlineBlocks name="blocks" blocks={PAGE_BLOCKS} />
       </InlineForm>
+      {/* </ModalProvider> */}
     </>
   )
 }
