@@ -1,5 +1,5 @@
 import React from 'react'
-import { InlineGroup } from 'react-tinacms-inline'
+import { BlocksControls } from 'react-tinacms-inline'
 import { BlockComponent, BlockType } from '../blocks'
 import { HeroSimpleCenteredTemplate } from './HeroSimpleCenteredTemplate'
 
@@ -9,21 +9,25 @@ export interface HeroBlockConfig {
 }
 
 const HeroBlock: BlockComponent<HeroBlockConfig> = (blockProps) => {
+  console.log({ blockProps })
+  const { index } = blockProps
   return (
     <>
-      <InlineGroup
-        name="."
-        fields={[
-          {
-            name: 'paragraphText',
-            label: 'Paragraph Text',
-            description: 'Write some more Text',
-            component: 'textarea',
-          },
-        ]}
-      >
+      <BlocksControls index={index}>
+        {/* <InlineGroup
+          name="."
+          fields={[
+            {
+              name: 'paragraphText',
+              label: 'Paragraph Text',
+              description: 'Write some more Text',
+              component: 'textarea',
+            },
+          ]}
+        > */}
         <HeroSimpleCenteredTemplate {...blockProps} />
-      </InlineGroup>
+        {/* </InlineGroup> */}
+      </BlocksControls>
     </>
   )
 }
@@ -32,7 +36,11 @@ export const HeroBlockType: BlockType<HeroBlockConfig> = {
   type: 'hero',
   Component: HeroBlock,
   template: {
-    mainText: 'This is Hero',
-    paragraphText: `Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.`,
+    label: 'Hero Block',
+    fields: [],
+    defaultItem: {
+      mainText: 'This is Hero',
+      paragraphText: `Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.`,
+    },
   },
 }

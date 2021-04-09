@@ -5,7 +5,11 @@ import { HeroBlockType } from './HeroSimpleCentered/HeroBlock'
 export interface BlockType<TConfig> {
   type: string
   Component: BlockComponent<TConfig>
-  template: TConfig
+  template: {
+    label: string
+    defaultItem: TConfig
+    fields: any[]
+  }
 }
 
 export const BlockTypes = [HeroBlockType]

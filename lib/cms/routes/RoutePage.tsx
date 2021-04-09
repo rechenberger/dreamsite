@@ -32,7 +32,7 @@ export const RoutePage: FunctionComponent<{
   return (
     <>
       <InlineForm form={form}>
-        <InlineBlocks name="blocks" blocks={PAGE_BLOCKS as any} />
+        <InlineBlocks name="blocks" blocks={PAGE_BLOCKS} />
       </InlineForm>
     </>
   )
