@@ -15,8 +15,18 @@ export const getBlockType = (type: string) => {
 }
 
 // TODO: use FullBlockFragment?
+// export type BlockComponent<TConfig> = FunctionComponent<{
+//   config: TConfig
+//   id: string
+//   type: string
+// }>
+
 export type BlockComponent<TConfig> = FunctionComponent<{
-  config: TConfig
-  id: string
-  type: string
+  data: BlockData<TConfig>
+  index: number
+  name: string
 }>
+
+export type BlockData<TConfig> = TConfig & {
+  _template: string
+}
