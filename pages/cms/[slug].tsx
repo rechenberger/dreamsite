@@ -1,4 +1,4 @@
-import { Block } from 'lib/cms/blocks/Block'
+import { RoutePage } from 'lib/cms/routes/RoutePage'
 import { MainLayout } from 'lib/components/MainLayout'
 import { Seo } from 'lib/components/Seo'
 import {
@@ -15,13 +15,11 @@ import React from 'react'
 const CmsRoutePage = () => {
   const { slug } = useParams()
   const { data } = useGetPageBlocksQuery({ variables: { slug } })
-  const blocks = data.route.blocks
+  const routePage = data?.route
   return (
     <MainLayout>
       <Seo title={slug} />
-      {blocks.map((block) => (
-        <Block key={block.id} block={block} />
-      ))}
+      <RoutePage routePage={routePage} />
     </MainLayout>
   )
 }
