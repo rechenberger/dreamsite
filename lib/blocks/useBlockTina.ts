@@ -8,7 +8,7 @@ export const useBlockTina = ({
   fields,
 }: {
   block: FullBlockFragment
-  fields: any[]
+  fields?: any[]
 }) => {
   const [save] = useSaveBlockMutation()
   const { id, type, config: configBefore } = block

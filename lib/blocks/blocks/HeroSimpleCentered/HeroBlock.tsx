@@ -12,13 +12,13 @@ export interface HeroBlockConfig {
 const HeroBlock: BlockComponent<HeroBlockConfig> = (block) => {
   const { form, config } = useBlockTina({
     block,
-    fields: [
-      {
-        name: 'mainText',
-        label: 'Main Text',
-        component: 'text',
-      },
-    ],
+    // fields: [
+    //   {
+    //     name: 'mainText',
+    //     label: 'Main Text',
+    //     component: 'text',
+    //   },
+    // ],
   })
 
   return (
