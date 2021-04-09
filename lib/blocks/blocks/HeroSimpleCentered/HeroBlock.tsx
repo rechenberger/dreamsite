@@ -1,26 +1,13 @@
 import React from 'react'
-import { InlineForm, InlineGroup, InlineText } from 'react-tinacms-inline'
-import styled from 'styled-components'
-import tw from 'twin.macro'
+import { InlineForm, InlineGroup } from 'react-tinacms-inline'
 import { BlockComponent, BlockType } from '../../blocks'
 import { useBlockTina } from '../../useBlockTina'
 import { HeroSimpleCenteredTemplate } from './HeroSimpleCenteredTemplate'
 
 export interface HeroBlockConfig {
   mainText: string
+  paragraphText: string
 }
-
-const Heading = styled.h1`
-  font-size: 3em;
-  font-weight: 900;
-  border: 1px solid black;
-`
-
-const HeroContainer = tw.div`
-  bg-gray-500
-  p-16
-  rounded
-`
 
 const HeroBlock: BlockComponent<HeroBlockConfig> = (block) => {
   const { form, config } = useBlockTina({
@@ -39,35 +26,18 @@ const HeroBlock: BlockComponent<HeroBlockConfig> = (block) => {
       <InlineForm form={form}>
         <InlineGroup
           name="."
-          fields={
-            [
-              {
-                name: 'typography.style',
-                label: 'Type Style',
-                description: 'Select a type style for the hero copy',
-                component: 'select',
-                options: ['Swiss-Style', 'Art-Nouveau', 'Command-Line'],
-              },
-              {
-                name: 'typography.color',
-                label: 'Type Color',
-                description: 'Select a color for the hero copy',
-                component: 'color',
-                widget: 'block',
-                colors: ['#404040', '#ff0000', '#1B1E25'],
-              },
-            ] as any // TODO: fix typing
-          }
+          fields={[
+            {
+              name: 'paragraphText',
+              label: 'Paragraph Text',
+              description: 'Write some more Text',
+              component: 'textarea',
+            },
+          ]}
         >
-          <HeroContainer>
-            <Heading>
-              <InlineText name="mainText" />
-            </Heading>
-          </HeroContainer>
+          <HeroSimpleCenteredTemplate {...block} config={config} />
         </InlineGroup>
       </InlineForm>
-      <Heading>{config.mainText}</Heading>
-      <HeroSimpleCenteredTemplate />
     </>
   )
 }
@@ -77,5 +47,6 @@ export const HeroBlockType: BlockType<HeroBlockConfig> = {
   component: HeroBlock,
   defaultConfig: {
     mainText: 'This is Hero',
+    paragraphText: `Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.`,
   },
 }
