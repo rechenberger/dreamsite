@@ -3,7 +3,7 @@ import { TinaCMS, TinaProvider as TinaProviderRaw } from 'tinacms'
 
 export const TinaProvider: FunctionComponent<{}> = ({ children }) => {
   const cms = useMemo(
-    () => new TinaCMS({ enabled: true, toolbar: true, sidebar: true }),
+    () => new TinaCMS({ enabled: true, toolbar: true, sidebar: false }),
     []
   )
   return (

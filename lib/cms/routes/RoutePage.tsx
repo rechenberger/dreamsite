@@ -3,7 +3,6 @@ import { RouteWithBlocksFragment } from 'lib/graphql/operations/GetPageBlocks.gr
 import { map } from 'lodash'
 import React, { FunctionComponent } from 'react'
 import { InlineBlocks, InlineForm } from 'react-tinacms-inline'
-import { HeroBlockType } from '../blocks/HeroSimpleCentered/HeroBlock'
 import { PAGE_BLOCKS } from '../blocks/PageBlocks.static'
 
 export const RoutePage: FunctionComponent<{
@@ -28,19 +27,19 @@ export const RoutePage: FunctionComponent<{
       console.log({ newData })
       alert('Saved Whole RoutePage')
     },
-    fields: [
-      {
-        label: 'Page Blocks',
-        name: 'blocks',
-        component: 'blocks',
-        itemProps: (item) => ({
-          label: item.mainText,
-        }),
-        templates: {
-          hero: HeroBlockType.template,
-        },
-      },
-    ],
+    // fields: [
+    //   {
+    //     label: 'Page Blocks',
+    //     name: 'blocks',
+    //     component: 'blocks',
+    //     itemProps: (item) => ({
+    //       label: item.mainText,
+    //     }),
+    //     templates: {
+    //       hero: HeroBlockType.template,
+    //     },
+    //   },
+    // ],
   })
 
   usePlugin(form)
