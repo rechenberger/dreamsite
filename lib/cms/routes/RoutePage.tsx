@@ -1,6 +1,6 @@
 import { useForm, usePlugin } from '@tinacms/react-core'
 import { Cms_Block_Insert_Input } from 'lib/graphql/operations/CharacterCard.graphql'
-import { RouteWithBlocksFragment } from 'lib/graphql/operations/GetPageBlocks.graphql'
+import { FullRoutePageFragment } from 'lib/graphql/operations/GetPageBlocks.graphql'
 import { useSaveBlocksMutation } from 'lib/graphql/operations/SaveBlocks.graphql'
 import { map } from 'lodash'
 import React, { FunctionComponent } from 'react'
@@ -9,7 +9,7 @@ import { BlockData } from '../blocks/blocks'
 import { PAGE_BLOCKS } from '../blocks/PageBlocks.static'
 
 export const RoutePage: FunctionComponent<{
-  routePage: RouteWithBlocksFragment
+  routePage: FullRoutePageFragment
 }> = ({ routePage }) => {
   const { slug } = routePage
   const blocksFromDb = routePage.blocks
