@@ -7,6 +7,6 @@ export const Block: FunctionComponent<{ block: FullBlockFragment }> = ({
 }) => {
   const { type } = block
   const blockType = getBlockType(type)
-  const Component = blockType.component
+  const Component = blockType.Component
   return <Component {...block} />
 }
