@@ -1,5 +1,7 @@
 import { useForm, usePlugin } from '@tinacms/react-core'
+import { Cms_Block_Insert_Input } from 'lib/graphql/operations/CharacterCard.graphql'
 import { RouteWithBlocksFragment } from 'lib/graphql/operations/GetPageBlocks.graphql'
+import { useSaveBlocksMutation } from 'lib/graphql/operations/SaveBlocks.graphql'
 import { map } from 'lodash'
 import React, { FunctionComponent } from 'react'
 import { InlineBlocks, InlineForm } from 'react-tinacms-inline'
@@ -11,6 +13,8 @@ export const RoutePage: FunctionComponent<{
 }> = ({ routePage }) => {
   const { slug } = routePage
   const blocksFromDb = routePage.blocks
+
+  const [saveBlocks] = useSaveBlocksMutation()
 
   const blocks = map(blocksFromDb, (block) => ({
     _template: block.type,
@@ -29,14 +33,18 @@ export const RoutePage: FunctionComponent<{
       const newBlocks = newData.blocks as BlockData<any>[]
       const blocks = map(
         newBlocks,
-        ({ config, _template, type, id }, position) => ({
-          id,
-          config,
-          type: type || _template,
-          position,
-        })
+        ({ config, _template, type, id }, position) =>
+          ({
+            id,
+            config,
+            type: type || _template,
+            position,
+            routeSlug: slug,
+          } as Cms_Block_Insert_Input)
       )
       console.log({ blocks })
+
+      await saveBlocks({ variables: { blocks } })
     },
   })
 
