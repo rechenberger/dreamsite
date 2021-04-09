@@ -5,9 +5,11 @@ import {
   queryGetPageBlocks,
   useGetPageBlocksQuery,
 } from 'lib/graphql/operations/GetPageBlocks.graphql'
+import { queryGetRouteSlugs } from 'lib/graphql/operations/GetRouteSlugs.graphql'
 import { getStaticPathsPlus } from 'lib/next/getStaticPathsPlus'
 import { getStaticPropsPlus } from 'lib/next/getStaticPropsPlus'
 import { useParams } from 'lib/next/useParams'
+import { map } from 'lodash'
 import React from 'react'
 
 const CmsRoutePage = () => {
@@ -40,8 +42,9 @@ export const getStaticProps = getStaticPropsPlus({
 export const getStaticPaths = getStaticPathsPlus({
   fallback: 'blocking',
   getPaths: async ({ apolloClient }) => {
-    // const { data } = await queryGetCharacters({ apolloClient })
-    return [{ params: { slug: 'team' } }]
+    const { data } = await queryGetRouteSlugs({ apolloClient })
+    const slugs = map(data?.routes, ({ slug }) => slug)
+    return map(slugs, (slug) => ({ params: { slug } }))
   },
 })
 
