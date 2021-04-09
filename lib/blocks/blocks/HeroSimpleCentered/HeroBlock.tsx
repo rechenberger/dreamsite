@@ -2,8 +2,9 @@ import React from 'react'
 import { InlineForm, InlineGroup, InlineText } from 'react-tinacms-inline'
 import styled from 'styled-components'
 import tw from 'twin.macro'
-import { BlockComponent, BlockType } from '../blocks'
-import { useBlockTina } from '../useBlockTina'
+import { BlockComponent, BlockType } from '../../blocks'
+import { useBlockTina } from '../../useBlockTina'
+import { HeroSimpleCenteredTemplate } from './HeroSimpleCenteredTemplate'
 
 export interface HeroBlockConfig {
   mainText: string
@@ -66,6 +67,7 @@ const HeroBlock: BlockComponent<HeroBlockConfig> = (block) => {
         </InlineGroup>
       </InlineForm>
       <Heading>{config.mainText}</Heading>
+      <HeroSimpleCenteredTemplate />
     </>
   )
 }

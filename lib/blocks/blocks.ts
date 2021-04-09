@@ -1,6 +1,6 @@
 import { find } from 'lodash'
 import { FunctionComponent } from 'react'
-import { HeroBlockType } from './blocks/HeroBlock'
+import { HeroBlockType } from './blocks/HeroSimpleCentered/HeroBlock'
 
 export interface BlockType<TConfig> {
   type: string
