@@ -9,7 +9,7 @@ export interface HeroBlockConfig {
 }
 
 const HeroBlock: BlockComponent<HeroBlockConfig> = (blockProps) => {
-  console.log({ blockProps })
+  console.info(blockProps)
   const { index } = blockProps
   return (
     <>
