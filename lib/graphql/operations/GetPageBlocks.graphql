@@ -12,6 +12,8 @@ fragment FullBlock on cms_block {
 
 fragment FullRoutePage on cms_route {
   slug
+  tenantId
+  stage
   blocks(order_by: { position: asc }) {
     ...FullBlock
   }

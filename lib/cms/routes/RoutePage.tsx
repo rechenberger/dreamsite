@@ -11,7 +11,7 @@ import { PAGE_BLOCKS } from '../blocks/PageBlocks.static'
 export const RoutePage: FunctionComponent<{
   routePage: FullRoutePageFragment
 }> = ({ routePage }) => {
-  const { slug } = routePage
+  const { slug, tenantId, stage } = routePage
   const blocksFromDb = routePage.blocks
 
   const [saveBlocks] = useSaveBlocksMutation()
@@ -40,6 +40,10 @@ export const RoutePage: FunctionComponent<{
             type: type || _template,
             position,
             routeSlug: slug,
+            tenantId,
+            stage,
+            // TODO: do not hardcode
+            locale: 'en',
           } as Cms_Block_Insert_Input)
       )
       console.log({ blocks })
