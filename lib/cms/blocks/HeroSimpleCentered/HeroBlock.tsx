@@ -1,6 +1,6 @@
 import React from 'react'
 import { BlocksControls } from 'react-tinacms-inline'
-import { BlockComponent, BlockType } from '../blocks'
+import { BlockComponent, BlockType } from '../Block.types'
 import { HeroSimpleCenteredTemplate } from './HeroSimpleCenteredTemplate'
 
 export interface HeroBlockConfig {
@@ -9,7 +9,7 @@ export interface HeroBlockConfig {
 }
 
 const HeroBlock: BlockComponent<HeroBlockConfig> = (blockProps) => {
-  console.info(blockProps)
+  // console.info(blockProps)
   const { index } = blockProps
   return (
     <>

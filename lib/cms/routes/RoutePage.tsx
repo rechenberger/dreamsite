@@ -5,7 +5,7 @@ import { useSaveBlocksMutation } from 'lib/graphql/operations/SaveBlocks.graphql
 import { map } from 'lodash'
 import React, { FunctionComponent } from 'react'
 import { InlineBlocks, InlineForm } from 'react-tinacms-inline'
-import { BlockData } from '../blocks/blocks'
+import { BlockData } from '../blocks/Block.types'
 import { PAGE_BLOCKS } from '../blocks/PageBlocks.static'
 
 export const RoutePage: FunctionComponent<{
@@ -29,7 +29,7 @@ export const RoutePage: FunctionComponent<{
       blocks,
     },
     onSubmit: async (newData) => {
-      console.log({ newData })
+      // console.log({ newData })
       const newBlocks = newData.blocks as BlockData<any>[]
       const blocks = map(
         newBlocks,
@@ -46,7 +46,7 @@ export const RoutePage: FunctionComponent<{
             locale: 'en',
           } as Cms_Block_Insert_Input)
       )
-      console.log({ blocks })
+      // console.log({ blocks })
 
       await saveBlocks({ variables: { blocks } })
     },

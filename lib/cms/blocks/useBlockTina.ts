@@ -3,6 +3,7 @@ import { useSaveBlockMutation } from 'lib/graphql/operations/SaveBlock.graphql'
 import { useMemo } from 'react'
 import { useForm, usePlugin } from 'tinacms'
 
+// DEPRECATED
 export const useBlockTina = ({
   block,
   fields,
