@@ -32,7 +32,7 @@ export type BlockComponent<TConfig> = FunctionComponent<{
   name: string
 }>
 
-export type BlockData<TConfig> = FullBlockFragment & {
+export type BlockData<TConfig> = Partial<FullBlockFragment> & {
   _template: string
   config: TConfig
 }

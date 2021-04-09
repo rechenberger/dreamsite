@@ -3,6 +3,7 @@ import { RouteWithBlocksFragment } from 'lib/graphql/operations/GetPageBlocks.gr
 import { map } from 'lodash'
 import React, { FunctionComponent } from 'react'
 import { InlineBlocks, InlineForm } from 'react-tinacms-inline'
+import { BlockData } from '../blocks/blocks'
 import { PAGE_BLOCKS } from '../blocks/PageBlocks.static'
 
 export const RoutePage: FunctionComponent<{
@@ -25,7 +26,17 @@ export const RoutePage: FunctionComponent<{
     },
     onSubmit: async (newData) => {
       console.log({ newData })
-      alert('Saved Whole RoutePage')
+      const newBlocks = newData.blocks as BlockData<any>[]
+      const blocks = map(
+        newBlocks,
+        ({ config, _template, type, id }, position) => ({
+          id,
+          config,
+          type: type || _template,
+          position,
+        })
+      )
+      console.log({ blocks })
     },
   })
 
