@@ -1,4 +1,4 @@
-import { Block } from 'lib/cms/Block'
+import { Block } from 'lib/cms/blocks/Block'
 import { MainLayout } from 'lib/components/MainLayout'
 import { Seo } from 'lib/components/Seo'
 import {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { InlineForm, InlineGroup } from 'react-tinacms-inline'
-import { BlockComponent, BlockType } from '../../blocks'
-import { useBlockTina } from '../../useBlockTina'
+import { BlockComponent, BlockType } from '../blocks'
+import { useBlockTina } from '../useBlockTina'
 import { HeroSimpleCenteredTemplate } from './HeroSimpleCenteredTemplate'
 
 export interface HeroBlockConfig {
