@@ -14,12 +14,12 @@ export const HeroSimpleCenteredTemplate: BlockComponent<HeroBlockConfig> = ({
           <div tw="text-center">
             <h1 tw="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
               <span tw="block xl:inline">
-                <InlineText name="mainText" />
+                <InlineText name="config.mainText" />
               </span>
               {/* <span tw="block text-indigo-600 xl:inline">online business</span> */}
             </h1>
             <p tw="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-              {data.paragraphText}
+              {data.config.paragraphText}
             </p>
             <div tw="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
               <div tw="rounded-md shadow">

@@ -1,3 +1,4 @@
+import { FullBlockFragment } from 'lib/graphql/operations/GetPageBlocks.graphql'
 import { find } from 'lodash'
 import { FunctionComponent } from 'react'
 import { HeroBlockType } from './HeroSimpleCentered/HeroBlock'
@@ -7,7 +8,7 @@ export interface BlockType<TConfig> {
   Component: BlockComponent<TConfig>
   template: {
     label: string
-    defaultItem: TConfig
+    defaultItem: { config: TConfig }
     fields: any[]
   }
 }
@@ -31,6 +32,7 @@ export type BlockComponent<TConfig> = FunctionComponent<{
   name: string
 }>
 
-export type BlockData<TConfig> = TConfig & {
+export type BlockData<TConfig> = FullBlockFragment & {
   _template: string
+  config: TConfig
 }

@@ -13,7 +13,7 @@ export const RoutePage: FunctionComponent<{
 
   const blocks = map(blocksFromDb, (block) => ({
     _template: block.type,
-    ...block.config,
+    ...block,
   }))
 
   const [, form] = useForm({
@@ -27,19 +27,6 @@ export const RoutePage: FunctionComponent<{
       console.log({ newData })
       alert('Saved Whole RoutePage')
     },
-    // fields: [
-    //   {
-    //     label: 'Page Blocks',
-    //     name: 'blocks',
-    //     component: 'blocks',
-    //     itemProps: (item) => ({
-    //       label: item.mainText,
-    //     }),
-    //     templates: {
-    //       hero: HeroBlockType.template,
-    //     },
-    //   },
-    // ],
   })
 
   usePlugin(form)

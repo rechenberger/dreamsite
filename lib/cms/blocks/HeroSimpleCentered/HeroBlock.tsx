@@ -27,15 +27,17 @@ export const HeroBlockType: BlockType<HeroBlockConfig> = {
     label: 'Hero Block',
     fields: [
       {
-        name: 'paragraphText',
+        name: 'config.paragraphText',
         label: 'Paragraph Text',
         description: 'Write some more Text',
         component: 'textarea',
       },
     ],
     defaultItem: {
-      mainText: 'This is Hero',
-      paragraphText: `Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.`,
+      config: {
+        mainText: 'This is Hero',
+        paragraphText: `Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.`,
+      },
     },
   },
 }
