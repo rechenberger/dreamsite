@@ -1,4 +1,4 @@
-import { BlockComponent } from 'lib/blocks/blocks'
+import { BlockComponent } from 'lib/cms/blocks'
 import React from 'react'
 import { InlineText } from 'react-tinacms-inline'
 import 'twin.macro'
