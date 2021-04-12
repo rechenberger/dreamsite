@@ -5,8 +5,14 @@ import { useSaveBlocksMutation } from 'lib/graphql/operations/SaveBlocks.graphql
 import { filter, map } from 'lodash'
 import React, { FunctionComponent } from 'react'
 import { InlineBlocks, InlineForm } from 'react-tinacms-inline'
+import tw from 'twin.macro'
 import { BlockData } from '../blocks/Block.types'
 import { PAGE_BLOCKS } from '../blocks/PageBlocks.static'
+
+const InlineBlocksStyled = tw(InlineBlocks)`
+  flex
+  flex-col
+  space-y-8`
 
 export const RoutePage: FunctionComponent<{
   routePage: FullRoutePageFragment
@@ -66,7 +72,7 @@ export const RoutePage: FunctionComponent<{
     <>
       {/* <ModalProvider> */}
       <InlineForm form={form}>
-        <InlineBlocks name="blocks" blocks={PAGE_BLOCKS} />
+        <InlineBlocksStyled name="blocks" blocks={PAGE_BLOCKS} />
       </InlineForm>
       {/* </ModalProvider> */}
     </>
