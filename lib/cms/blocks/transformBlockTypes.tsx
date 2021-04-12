@@ -9,7 +9,7 @@ const BlockWithControls: FunctionComponent<{
 }> = ({ blockProps, blockType }) => {
   return (
     <>
-      <BlocksControls index={blockProps.index}>
+      <BlocksControls index={blockProps.index} focusRing={{ offset: 0 }}>
         <blockType.Component {...blockProps} />
       </BlocksControls>
     </>
