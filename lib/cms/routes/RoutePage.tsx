@@ -2,7 +2,7 @@ import { useForm, usePlugin } from '@tinacms/react-core'
 import { Cms_Block_Insert_Input } from 'lib/graphql/operations/CharacterCard.graphql'
 import { FullRoutePageFragment } from 'lib/graphql/operations/GetPageBlocks.graphql'
 import { useSaveBlocksMutation } from 'lib/graphql/operations/SaveBlocks.graphql'
-import { map } from 'lodash'
+import { filter, map } from 'lodash'
 import React, { FunctionComponent } from 'react'
 import { InlineBlocks, InlineForm } from 'react-tinacms-inline'
 import { BlockData } from '../blocks/Block.types'
@@ -31,7 +31,7 @@ export const RoutePage: FunctionComponent<{
     onSubmit: async (newData) => {
       // console.log({ newData })
       const newBlocks = newData.blocks as BlockData<any>[]
-      const blocks = map(
+      const blocksToInsert = map(
         newBlocks,
         ({ config, _template, type, id }, position) =>
           ({
@@ -46,9 +46,17 @@ export const RoutePage: FunctionComponent<{
             locale: 'en',
           } as Cms_Block_Insert_Input)
       )
-      // console.log({ blocks })
 
-      await saveBlocks({ variables: { blocks } })
+      const oldBlockIds = map(blocksFromDb, ({ id }) => id)
+      const newBlockIds = map(blocksToInsert, ({ id }) => id)
+      const blockIdsToDelete = filter(
+        oldBlockIds,
+        (id) => !newBlockIds.includes(id)
+      )
+
+      await saveBlocks({
+        variables: { blocks: blocksToInsert, blockIdsToDelete },
+      })
     },
   })
 

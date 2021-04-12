@@ -1,4 +1,7 @@
-mutation SaveBlocks($blocks: [cms_block_insert_input!]!) {
+mutation SaveBlocks(
+  $blocks: [cms_block_insert_input!] = []
+  $blockIdsToDelete: [uuid!] = []
+) {
   insert_cms_block(
     objects: $blocks
     on_conflict: {
@@ -6,6 +9,9 @@ mutation SaveBlocks($blocks: [cms_block_insert_input!]!) {
       update_columns: [config, position, routeSlug, type, locale, stage]
     }
   ) {
+    affected_rows
+  }
+  delete_cms_block(where: { id: { _in: $blockIdsToDelete } }) {
     affected_rows
   }
 }
