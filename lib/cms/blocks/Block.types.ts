@@ -7,7 +7,7 @@ export interface BlockType<TConfig> {
   template: {
     label: string
     defaultItem: { config: TConfig }
-    fields: any[]
+    fields?: any[]
   }
 }
 
