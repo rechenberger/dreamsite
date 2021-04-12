@@ -3,7 +3,7 @@ import 'twin.macro'
 
 export const StatsTemplate: FunctionComponent<{}> = () => {
   return (
-    <div tw="bg-gray-300">
+    <div>
       <h3 tw="text-lg leading-6 font-medium text-gray-900">Last 30 days</h3>
       <dl tw="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
         <div tw="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">

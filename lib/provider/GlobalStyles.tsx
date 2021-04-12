@@ -12,7 +12,7 @@ const CustomStyles = createGlobalStyle`
 
     
     ${tw`
-      bg-gray-100
+      bg-gray-50
       text-gray-800
       dark:bg-gray-900
       dark:text-gray-100
