@@ -11,11 +11,15 @@ export interface BlockType<TConfig> {
   }
 }
 
-export type BlockComponent<TConfig> = FunctionComponent<{
+export type BlockComponentProps<TConfig> = {
   data: BlockData<TConfig>
   index: number
   name: string
-}>
+}
+
+export type BlockComponent<TConfig> = FunctionComponent<
+  BlockComponentProps<TConfig>
+>
 
 export type BlockData<TConfig> = Partial<FullBlockFragment> & {
   _template: string
