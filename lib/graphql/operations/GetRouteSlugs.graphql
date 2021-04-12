@@ -1,0 +1,10 @@
+query GetRouteSlugs(
+  $tenantId: String = "sodefa"
+  $stage: String = "production"
+) {
+  routes: cms_route(
+    where: { tenantId: { _eq: $tenantId }, stage: { _eq: $stage } }
+  ) {
+    slug
+  }
+}

@@ -7,8 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "graphql": "graphql-let --require dotenv/config",
-    "graphql:schema": "graphql-codegen --require dotenv/config"
+    "graphql": "DOTENV_CONFIG_PATH=\"./.env.local\" graphql-let --require dotenv/config",
+    "graphql:schema": "DOTENV_CONFIG_PATH=\"./.env.local\" graphql-codegen --require dotenv/config"
   },
   "dependencies": {
     "@apollo/client": "^3.3.13",
@@ -17,7 +17,9 @@
     "next-seo": "^4.23.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "styled-components": "^5.2.1"
+    "react-tinacms-inline": "^0.39.0",
+    "styled-components": "^5.2.1",
+    "tinacms": "^0.39.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.12.13",

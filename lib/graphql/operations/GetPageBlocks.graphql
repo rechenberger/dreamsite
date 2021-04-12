@@ -1,0 +1,20 @@
+query GetPageBlocks($slug: String = "team") {
+  route: cms_route_by_pk(slug: $slug, stage: "production", tenantId: "sodefa") {
+    ...FullRoutePage
+  }
+}
+
+fragment FullBlock on cms_block {
+  id
+  type
+  config
+}
+
+fragment FullRoutePage on cms_route {
+  slug
+  tenantId
+  stage
+  blocks(order_by: { position: asc }) {
+    ...FullBlock
+  }
+}

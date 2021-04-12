@@ -1,0 +1,13 @@
+mutation SaveBlock($id: uuid!, $config: jsonb) {
+  update_cms_block(
+    where: {
+      id: { _eq: $id }
+      locale: { _eq: "en" }
+      tenantId: { _eq: "sodefa" }
+      stage: { _eq: "production" }
+    }
+    _set: { config: $config }
+  ) {
+    affected_rows
+  }
+}

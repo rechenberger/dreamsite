@@ -22,10 +22,10 @@ export default function Home() {
       label: 'Characters',
       href: '/characters',
     },
-    // {
-    //   label: 'Episodes',
-    //   href: '/episodes',
-    // },
+    {
+      label: 'CMS',
+      href: '/cms',
+    },
   ]
   return (
     <MainLayout>

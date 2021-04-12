@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
 import { useMemo } from 'react'
 
 export interface CreateApolloClientOptions {
@@ -9,7 +9,14 @@ const createApolloClient = (options: CreateApolloClientOptions) => {
   const uri = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT_URL
 
   const apolloClient = new ApolloClient({
-    uri,
+    link: new HttpLink({
+      uri,
+      headers: {
+        'x-hasura-admin-secret':
+          process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET ||
+          process.env.HASURA_ADMIN_SECRET,
+      },
+    }),
     cache: new InMemoryCache(),
   })
 
